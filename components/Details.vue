@@ -227,10 +227,10 @@ export default {
           formData.append("address", this.manualAdd.formatted);
           this.$store.commit("setAddress", this.manualAdd);
           this.$store.commit("setDetails", this.report);
-          this.$axios.$post("/reports/reports/", formData);
+          this.$axios.$post("/reports/all/", formData);
           this.$router.push("/success");
         } else formData.append("address", this.report.address);
-        this.$axios.$post("/reports/reports/", formData);
+        this.$axios.$post("/reports/all/", formData);
         this.$store.commit("setDetails", this.report);
         this.$router.push("/success");
       }
