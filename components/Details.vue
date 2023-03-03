@@ -235,30 +235,6 @@ export default {
         this.$router.push("/success");
       }
     },
-    /*
-    async submitReport() {
-      const formData = new FormData();
-      formData.append("photo", this.report.photo, this.report.photo.fileName);
-      formData.append("category", this.report.category);
-      formData.append("details", this.report.details);
-      this.$axios.$post("/reports/reports/", formData);
-    },
-
-    /*
-    async submitReport() {
-      this.$axios.$post("/reports/reports/", this.report);
-      const form = document.getElementById("main-form");
-      if (!form.checkValidity || form.checkValidity()) {
-        if (this.manualAddress) {
-          ", " + this.manualAdd.postcode;
-          this.$store.commit("setAddress", this.manualAdd);
-          this.$store.commit("setDetails", this.report);
-          this.$router.push("/success");
-        } else this.$store.commit("setDetails", this.report);
-        this.$router.push("/success");
-      }
-    },
-    */
   },
 
   computed: {
