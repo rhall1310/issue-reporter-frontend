@@ -79,7 +79,6 @@
         id="image-file"
         type="file"
         @change="onFilePicked"
-        required
         class="form-control"
       />
       <img v-if="preview" :src="preview" id="preview" />
