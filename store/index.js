@@ -1,6 +1,9 @@
 export const state = () => ({
   report: {
-    address: {},
+    address: {
+      lat: 0.0,
+      lon: 0.0,
+    },
     details: {},
     menuId: "",
   },
