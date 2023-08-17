@@ -69,6 +69,9 @@
         cols="40"
         rows="5"
         v-model="report.details"
+        class="form-control"
+        required
+        minlength="10"
       ></textarea>
 
       <h3>Photo</h3>
