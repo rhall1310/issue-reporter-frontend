@@ -43,7 +43,7 @@
 export default {
   computed: {
     hasMap() {
-      return this.$store.state.report.address.hasOwnProperty("lat");
+      return this.$store.state.report.address.lat > 0;
     },
   },
 };
