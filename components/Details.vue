@@ -83,6 +83,7 @@
         type="file"
         @change="onFilePicked"
         class="form-control"
+        required
       />
       <img v-if="preview" :src="preview" id="preview" />
       <div v-if="!report.anon">
