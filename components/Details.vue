@@ -59,12 +59,12 @@
       </div>
       <h3>Problem Details</h3>
 
-      <label for="loc-details"
+      <label for="details"
         >Can you give any further information? Such as a house number, business
         name or description of the problem?</label
       >
       <textarea
-        name="loc-details"
+        name="details"
         id=""
         cols="40"
         rows="5"
@@ -83,6 +83,7 @@
         type="file"
         @change="onFilePicked"
         class="form-control"
+        required
       />
       <img v-if="preview" :src="preview" id="preview" />
       <div v-if="!report.anon">
@@ -110,11 +111,11 @@
           required
           v-model="report.firstName"
         />
-        <label for="surname">Surname</label>
+        <label for="last_name">Surname</label>
         <input
           type="text"
           class="form-control"
-          id="surname"
+          id="last_name"
           required
           v-model="report.lastName"
         />
@@ -127,11 +128,11 @@
           required
           v-model="report.email"
         />
-        <label for="phone">Phone Number</label>
+        <label for="phone_number">Phone Number</label>
         <input
           type="tel"
           class="form-control"
-          id="phone"
+          id="phone_number"
           v-model="report.phoneNumber"
         />
 
@@ -210,16 +211,19 @@ export default {
     },
     async submitReport() {
       const form = document.getElementById("main-form");
-      const formData = new FormData();
+      const formData = new FormData(form);
+      console.log(formData);
       if (this.report.photo !== null) {
         formData.append("photo", this.report.photo, this.report.photo.fileName);
       }
 
       formData.append("category", this.report.category);
-      formData.append("details", this.report.details);
+      // formData.append("details", this.report.details);
 
-      formData.append("lat", this.$store.state.report.address.lat);
-      formData.append("lon", this.$store.state.report.address.lon);
+      // formData.append("lat", this.$store.state.report.address.lat);
+      //formData.append("lon", this.$store.state.report.address.lon);
+
+      // formData.append("first_name", this.report.firstName);
 
       if (!form.checkValidity || form.checkValidity()) {
         if (this.manualAddress) {
