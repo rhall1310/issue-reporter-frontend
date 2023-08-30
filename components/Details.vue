@@ -211,7 +211,7 @@ export default {
     },
     async submitReport() {
       const form = document.getElementById("main-form");
-      const formData = new FormData();
+      const formData = new FormData(form);
 
       if (this.report.photo !== null) {
         formData.append("photo", this.report.photo, this.report.photo.fileName);
