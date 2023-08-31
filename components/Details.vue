@@ -103,6 +103,7 @@
           <option>Other</option>
           <option>Prefer not to say</option>
         </select>
+
         <label for="first-name">First Name</label>
         <input
           type="text"
@@ -111,6 +112,7 @@
           required
           v-model="report.firstName"
         />
+
         <label for="last_name">Surname</label>
         <input
           type="text"
@@ -211,19 +213,20 @@ export default {
     },
     async submitReport() {
       const form = document.getElementById("main-form");
-      const formData = new FormData(form);
-      console.log(formData);
+
+      const formData = new FormData();
+
       if (this.report.photo !== null) {
         formData.append("photo", this.report.photo, this.report.photo.fileName);
       }
 
       formData.append("category", this.report.category);
-      // formData.append("details", this.report.details);
+      formData.append("details", this.report.details);
 
-      // formData.append("lat", this.$store.state.report.address.lat);
-      //formData.append("lon", this.$store.state.report.address.lon);
+      formData.append("lat", this.$store.state.report.address.lat);
+      formData.append("lon", this.$store.state.report.address.lon);
 
-      // formData.append("first_name", this.report.firstName);
+      formData.append("first_name", this.report.firstName);
 
       if (!form.checkValidity || form.checkValidity()) {
         if (this.manualAddress) {
@@ -236,9 +239,11 @@ export default {
           formData.append("address", this.manualAdd.formatted);
           this.$store.commit("setAddress", this.manualAdd);
           this.$store.commit("setDetails", this.report);
+          console.log(Array.from(formData));
           this.$axios.$post("/reports/all/", formData);
           this.$router.push("/success");
         } else formData.append("address", this.report.address);
+        console.log(Array.from(formData));
         this.$axios.$post("/reports/all/", formData);
         this.$store.commit("setDetails", this.report);
         this.$router.push("/success");
