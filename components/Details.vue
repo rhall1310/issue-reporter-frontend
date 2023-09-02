@@ -3,7 +3,13 @@
     <div class="map" v-if="!manualAddress">
       <p>Place the marker at the location of the issue you wish to report</p>
       <Map />
-      <p>{{ this.$store.state.report.address.formatted }}</p>
+      <p
+        v-if="!this.$store.state.report.address.formatted"
+        class="address-notifier"
+      >
+        Use the map to find the correct location
+      </p>
+      <p class="address">{{ this.$store.state.report.address.formatted }}</p>
     </div>
     <div class="manual-add container">
       <label for="manualAdd">I want to enter the address manually</label>
@@ -59,12 +65,12 @@
       </div>
       <h3>Problem Details</h3>
 
-      <label for="loc-details"
+      <label for="details"
         >Can you give any further information? Such as a house number, business
         name or description of the problem?</label
       >
       <textarea
-        name="loc-details"
+        name="details"
         id=""
         cols="40"
         rows="5"
@@ -103,6 +109,7 @@
           <option>Other</option>
           <option>Prefer not to say</option>
         </select>
+
         <label for="first-name">First Name</label>
         <input
           type="text"
@@ -111,11 +118,12 @@
           required
           v-model="report.firstName"
         />
-        <label for="surname">Surname</label>
+
+        <label for="last_name">Surname</label>
         <input
           type="text"
           class="form-control"
-          id="surname"
+          id="last_name"
           required
           v-model="report.lastName"
         />
@@ -128,11 +136,11 @@
           required
           v-model="report.email"
         />
-        <label for="phone">Phone Number</label>
+        <label for="phone_number">Phone Number</label>
         <input
           type="tel"
           class="form-control"
-          id="phone"
+          id="phone_number"
           v-model="report.phoneNumber"
         />
 
@@ -211,7 +219,8 @@ export default {
     },
     async submitReport() {
       const form = document.getElementById("main-form");
-      const formData = new FormData(form);
+
+      const formData = new FormData();
 
       if (this.report.photo !== null) {
         formData.append("photo", this.report.photo, this.report.photo.fileName);
@@ -222,6 +231,12 @@ export default {
 
       formData.append("lat", this.$store.state.report.address.lat);
       formData.append("lon", this.$store.state.report.address.lon);
+
+      formData.append("title", this.report.title);
+      formData.append("first_name", this.report.firstName);
+      formData.append("last_name", this.report.lastName);
+      formData.append("email", this.report.email);
+      formData.append("phone_number", this.report.phoneNumber);
 
       if (!form.checkValidity || form.checkValidity()) {
         if (this.manualAddress) {
@@ -234,12 +249,20 @@ export default {
           formData.append("address", this.manualAdd.formatted);
           this.$store.commit("setAddress", this.manualAdd);
           this.$store.commit("setDetails", this.report);
+
           this.$axios.$post("/reports/all/", formData);
           this.$router.push("/success");
-        } else formData.append("address", this.report.address);
-        this.$axios.$post("/reports/all/", formData);
-        this.$store.commit("setDetails", this.report);
-        this.$router.push("/success");
+        } else if (this.$store.state.report.address.lat) {
+          formData.append("address", this.report.address);
+
+          this.$axios.$post("/reports/all/", formData);
+          this.$store.commit("setDetails", this.report);
+          this.$router.push("/success");
+        } else {
+          alert(
+            "Failed - please provide a location via map or a manually entered address"
+          );
+        }
       }
     },
   },
@@ -276,6 +299,14 @@ export default {
 .manual-add {
   text-align: center;
   font-style: italic;
+}
+.address {
+  color: darkgreen;
+  font-weight: bold;
+}
+.address-notifier {
+  color: rgb(201, 23, 23);
+  font-weight: bold;
 }
 #submit {
   margin-top: 1em;
