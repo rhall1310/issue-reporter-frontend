@@ -3,7 +3,7 @@
     <div class="map" v-if="!manualAddress">
       <p>Place the marker at the location of the issue you wish to report</p>
       <Map />
-      <p>Placeholder</p>
+
       <p
         v-if="!this.$store.state.report.address.formatted"
         class="address-notifier"
