@@ -20,11 +20,10 @@ export default {
   async asyncData({ $axios, params }) {
     try {
       let categories = await $axios.$get("/menus/categories");
-      console.log(categories);
+
       return { categories };
       c;
     } catch (e) {
-      console.log(categories);
       return { categories: [] };
     }
   },
