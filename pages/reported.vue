@@ -10,7 +10,21 @@
 </template>
 
 <script>
-export default {};
+export default {
+  async asyncData({ $axios, params }) {
+    try {
+      let reports = await $axios.$get(`/reports/all/`);
+      return { reports };
+    } catch (e) {
+      return { reports: [] };
+    }
+  },
+  data() {
+    return {
+      reports: [],
+    };
+  },
+};
 </script>
 
 <style></style>
