@@ -2,7 +2,7 @@
   <div>
     <Header />
     <h2>See what's already been reported</h2>
-    <ReportedMap />
+    <ReportedMap :reports="{ reports }" />
     <p>Click on a marker to see the report details</p>
 
     <a href="/"><p>Report something yourself</p></a>
@@ -14,6 +14,7 @@ export default {
   async asyncData({ $axios, params }) {
     try {
       let reports = await $axios.$get(`/reports/all/`);
+
       return { reports };
     } catch (e) {
       return { reports: [] };

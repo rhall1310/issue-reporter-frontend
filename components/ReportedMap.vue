@@ -31,11 +31,14 @@
     </div>
 
     <client-only>
-      <l-map id="map" :zoom="zoom" :center="markerCoords" @click="moveMarker">
+      <l-map id="map" :zoom="zoom" :center="centreCoords" @click="moveMarker">
         <l-tile-layer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
-        <l-marker :lat-lng="markerCoords"></l-marker>
+        <div v-for="report in reports" :key="report.index">
+          <l-marker :lat-lng="centreCoords"></l-marker>
+        </div>
+        <!-- <l-marker :lat-lng="centreCoords"></l-marker> -->
       </l-map>
     </client-only>
   </div>
@@ -43,6 +46,9 @@
 
 <script>
 export default {
+  props: {
+    reports: Array,
+  },
   computed: {
     limitResults() {
       return this.autoResults.slice(0, 3);
@@ -53,7 +59,7 @@ export default {
     return {
       apiKey: process.env.NUXT_ENV_API_KEY,
       zoom: 15,
-      markerCoords: [50.795893175589484, 0.26435462099609897],
+      centreCoords: [50.795893175589484, 0.26435462099609897],
       lat: "50.795893175589484",
       lon: "0.26435462099609897",
       addSearch: "",
@@ -94,7 +100,7 @@ export default {
 
   methods: {
     moveMarker(event) {
-      this.markerCoords = event.latlng;
+      this.centreCoords = event.latlng;
       this.lat = event.latlng.lat;
       this.lon = event.latlng.lng;
 
@@ -120,14 +126,14 @@ export default {
     },
 
     recenterMap(result) {
-      this.markerCoords = [result.properties.lat, result.properties.lon];
+      this.centreCoords = [result.properties.lat, result.properties.lon];
       this.zoom = 16;
       this.autoResults = [];
     },
 
     getLoc() {
       navigator.geolocation.getCurrentPosition((position) => {
-        this.markerCoords = [
+        this.centreCoords = [
           position.coords.latitude,
           position.coords.longitude,
         ];
