@@ -16,8 +16,12 @@ export default {
       let reports = await $axios.$get(`/reports/all/`);
 
       for (let report of reports) {
-        report.first_name.delete;
+        delete report.first_name;
+        delete report.last_name;
+        delete report.title;
       }
+
+      console.log(reports);
 
       return { reports };
     } catch (e) {

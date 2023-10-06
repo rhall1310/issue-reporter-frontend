@@ -36,7 +36,7 @@
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
         <div v-for="report in reports" :key="report.index">
-          <l-marker :lat-lng="centreCoords"></l-marker>
+          <l-marker :lat-lng="[report.lat, report.lon]"></l-marker>
         </div>
         <!-- <l-marker :lat-lng="centreCoords"></l-marker> -->
       </l-map>
