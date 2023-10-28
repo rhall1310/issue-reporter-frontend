@@ -22,8 +22,6 @@ export default {
         delete report.title;
       }
 
-      console.log(reports);
-
       return { reports };
     } catch (e) {
       return { reports: [] };

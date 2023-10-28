@@ -36,9 +36,14 @@
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
         <div v-for="report in reports" :key="report.index">
-          <l-marker :lat-lng="[report.lat, report.lon]"></l-marker>
+          <div v-if="dets" class="modal">
+            <p>Boo</p>
+          </div>
+          <l-marker
+            :lat-lng="[report.lat, report.lon]"
+            @click="dets = !dets"
+          ></l-marker>
         </div>
-        <!-- <l-marker :lat-lng="centreCoords"></l-marker> -->
       </l-map>
     </client-only>
   </div>
@@ -63,6 +68,7 @@ export default {
       lat: "50.795893175589484",
       lon: "0.26435462099609897",
       addSearch: "",
+      dets: false,
       address: {
         country_code: "gb",
         street: "Stanmer Drive",
@@ -210,6 +216,15 @@ export default {
 .result:hover {
   background-color: honeydew;
   cursor: pointer;
+}
+.modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100px; /* Full width */
+  height: 100px; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
 }
 
 @media screen and (min-width: 800px) {
