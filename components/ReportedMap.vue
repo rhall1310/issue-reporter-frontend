@@ -36,16 +36,16 @@
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
         <div v-for="report in reports" :key="report.index">
-          <div v-if="dets" class="modal">
-            <p>Boo</p>
-          </div>
           <l-marker
             :lat-lng="[report.lat, report.lon]"
-            @click="dets = !dets"
+            @click="getDets(report)"
           ></l-marker>
         </div>
       </l-map>
     </client-only>
+    <div v-if="dets">
+      <p>Boo {{ currentReport }}</p>
+    </div>
   </div>
 </template>
 
@@ -69,6 +69,7 @@ export default {
       lon: "0.26435462099609897",
       addSearch: "",
       dets: false,
+      currentReport: {},
       address: {
         country_code: "gb",
         street: "Stanmer Drive",
@@ -167,6 +168,10 @@ export default {
           this.$store.commit("setAddress", this.address);
         })
         .catch((error) => console.log("error", error));
+    },
+    getDets(i) {
+      this.dets = true;
+      this.currentReport = i;
     },
   },
 };
