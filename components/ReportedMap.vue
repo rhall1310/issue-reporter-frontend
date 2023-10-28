@@ -43,8 +43,8 @@
         </div>
       </l-map>
     </client-only>
-    <div v-if="dets">
-      <p>Boo {{ currentReport }}</p>
+    <div v-if="dets" class="report-details">
+      <p>{{ currentReport }}</p>
     </div>
   </div>
 </template>
@@ -182,6 +182,7 @@ export default {
   width: 100vw;
   height: 50vh;
   padding-bottom: 3em;
+  margin-bottom: 10em;
 }
 
 .autocomplete-container {
@@ -222,14 +223,9 @@ export default {
   background-color: honeydew;
   cursor: pointer;
 }
-.modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100px; /* Full width */
-  height: 100px; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
+
+.report-details {
+  font-weight: bold;
 }
 
 @media screen and (min-width: 800px) {

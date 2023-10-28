@@ -1,12 +1,13 @@
 <template>
   <div>
-    <Header />
-    <h2>See what's already been reported</h2>
-    <!-- <ReportedMap :reports="{ reports }" /> -->
-    <p>Click on a marker to see the report details</p>
-    <ReportedMap :reports="reports" />
+    <div class="wrapper">
+      <Header />
+      <h2>See what's already been reported</h2>
+      <p>Click on a marker to see the report details</p>
+      <ReportedMap :reports="reports" />
+    </div>
 
-    <a href="/"><p>Report something yourself</p></a>
+    <a href="/" class="else">Report something yourself</a>
   </div>
 </template>
 
