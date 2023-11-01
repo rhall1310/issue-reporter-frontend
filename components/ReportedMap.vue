@@ -44,7 +44,7 @@
       </l-map>
     </client-only>
     <div v-if="dets" class="report-details">
-      <p>{{ currentReport }}</p>
+      <ReportDetails :report="currentReport" />
     </div>
   </div>
 </template>
@@ -222,10 +222,6 @@ export default {
 .result:hover {
   background-color: honeydew;
   cursor: pointer;
-}
-
-.report-details {
-  font-weight: bold;
 }
 
 @media screen and (min-width: 800px) {
