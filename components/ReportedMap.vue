@@ -43,9 +43,8 @@
         </div>
       </l-map>
     </client-only>
-    <div v-if="dets" class="report-details">
-      <ReportDetails :report="currentReport" />
-    </div>
+
+    <ReportDetails :report="currentReport" v-if="dets" />
   </div>
 </template>
 
@@ -181,8 +180,6 @@ export default {
 #map-wrap {
   width: 100vw;
   height: 50vh;
-  padding-bottom: 3em;
-  margin-bottom: 10em;
 }
 
 .autocomplete-container {
