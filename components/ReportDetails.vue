@@ -29,7 +29,7 @@ export default {
 
 .card {
   padding: 1rem;
-  margin: 1em;
+  margin: auto;
 
   max-width: 90%;
   background-color: #007bff;

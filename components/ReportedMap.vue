@@ -189,6 +189,9 @@ export default {
   width: 100vw;
   height: 50vh;
 }
+#map {
+  margin-bottom: 1em;
+}
 
 .autocomplete-container {
   justify-content: center;
