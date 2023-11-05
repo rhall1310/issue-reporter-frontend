@@ -1,7 +1,6 @@
 <template>
-  <div class="card">
-    <!-- <p>{{ report }}</p> -->
-
+  <div class="card" v-if="report">
+    <button class="close" @click="$emit('report-clear')">X</button>
     <h5 class="card-title">Report type: {{ report.category }}</h5>
     <p class="card-text">Location: {{ report.address }}</p>
     <p class="card-text">Details: {{ report.details }}</p>
@@ -30,11 +29,17 @@ export default {
 
 .card {
   padding: 1rem;
+  margin: 1em;
 
-  margin: auto;
   max-width: 90%;
   background-color: #007bff;
   color: black;
+}
+
+.close {
+  width: 1em;
+  font-weight: bold;
+  align-self: end;
 }
 
 @media screen and (min-width: 800px) {

@@ -44,7 +44,12 @@
       </l-map>
     </client-only>
 
-    <ReportDetails :report="currentReport" v-if="dets" />
+    <ReportDetails
+      :report="currentReport"
+      v-if="dets"
+      @report-clear="clearReport"
+    />
+    <a href="/" class="else">Report something yourself</a>
   </div>
 </template>
 
@@ -171,6 +176,9 @@ export default {
     getDets(i) {
       this.dets = true;
       this.currentReport = i;
+    },
+    clearReport() {
+      this.currentReport = null;
     },
   },
 };

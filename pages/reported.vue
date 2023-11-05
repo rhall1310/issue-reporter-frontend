@@ -6,7 +6,6 @@
       <p>Click on a marker to see the report details</p>
       <ReportedMap :reports="reports" />
     </div>
-    <a href="/" class="else">Report something yourself</a>
   </div>
 </template>
 
@@ -36,6 +35,8 @@ export default {
 </script>
 
 <style>
-.whole {
+body,
+html {
+  height: 100%;
 }
 </style>
