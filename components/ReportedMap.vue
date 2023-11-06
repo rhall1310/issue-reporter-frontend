@@ -39,14 +39,24 @@
           <l-marker
             :lat-lng="[report.lat, report.lon]"
             @click="getDets(report)"
-          ></l-marker>
+          >
+          </l-marker>
         </div>
+        <l-marker
+          v-if="this.currentReport"
+          :lat-lng="[currentMarker.lat, currentMarker.lon]"
+        >
+          <l-icon :icon-anchor="staticAnchor" class-name="someExtraClass">
+            <div class="headline">Selected</div>
+            <img src="/images/layers.png" />
+          </l-icon>
+        </l-marker>
       </l-map>
     </client-only>
 
     <ReportDetails
       :report="currentReport"
-      v-if="dets"
+      v-if="this.currentReport"
       @report-clear="clearReport"
     />
     <a href="/" class="else">Report something yourself</a>
@@ -72,8 +82,7 @@ export default {
       lat: "50.795893175589484",
       lon: "0.26435462099609897",
       addSearch: "",
-      dets: false,
-      currentReport: {},
+      currentReport: null,
       address: {
         country_code: "gb",
         street: "Stanmer Drive",
@@ -174,8 +183,8 @@ export default {
         .catch((error) => console.log("error", error));
     },
     getDets(i) {
-      this.dets = true;
       this.currentReport = i;
+      this.currentMarker = i;
     },
     clearReport() {
       this.currentReport = null;
@@ -230,6 +239,17 @@ export default {
 .result:hover {
   background-color: honeydew;
   cursor: pointer;
+}
+.someExtraClass {
+  background-color: aqua;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 0 20px 20px 20px;
+  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
 }
 
 @media screen and (min-width: 800px) {
