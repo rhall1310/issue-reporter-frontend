@@ -5,9 +5,9 @@
     <p class="card-text">Location: {{ report.address }}</p>
     <p class="card-text">Details: {{ report.details }}</p>
     <img
-      class="card-img-top photo"
       :src="report.photo"
-      alt="Card image cap"
+      class="photo"
+      alt="Report image "
       v-if="report.photo != null"
     />
   </div>
@@ -22,17 +22,20 @@ export default {
 </script>
 
 <style>
+body,
+html {
+  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
 .photo {
-  max-width: 200px;
+  max-width: 90%;
   align-self: center;
 }
-
 .card {
   padding: 1rem;
   margin: auto;
-
   max-width: 90%;
-
   color: black;
 }
 

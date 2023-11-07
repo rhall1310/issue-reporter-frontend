@@ -34,9 +34,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 body,
 html {
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+h2,
+p {
+  padding: 0.3rem;
+  text-align: center;
 }
 </style>
