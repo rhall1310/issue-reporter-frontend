@@ -46,9 +46,11 @@
           v-if="this.currentReport"
           :lat-lng="[currentMarker.lat, currentMarker.lon]"
         >
-          <l-icon :icon-anchor="staticAnchor" class-name="someExtraClass">
+          <l-icon
+            :icon-anchor="staticAnchor"
+            class-name="custom-marker bg-info "
+          >
             <div class="headline">Selected</div>
-            <img src="/images/layers.png" />
           </l-icon>
         </l-marker>
       </l-map>
@@ -59,7 +61,8 @@
       v-if="this.currentReport"
       @report-clear="clearReport"
     />
-    <a href="/" class="else">Report something yourself</a>
+
+    <a href="/" class="else"><h3>Report something yourself</h3></a>
   </div>
 </template>
 
@@ -240,8 +243,7 @@ export default {
   background-color: honeydew;
   cursor: pointer;
 }
-.someExtraClass {
-  background-color: aqua;
+.custom-marker {
   padding: 10px;
   border: 1px solid #333;
   border-radius: 0 20px 20px 20px;
@@ -250,6 +252,10 @@ export default {
   width: auto !important;
   height: auto !important;
   margin: 0 !important;
+  font-weight: bold;
+}
+h3 {
+  text-align: center;
 }
 
 @media screen and (min-width: 800px) {

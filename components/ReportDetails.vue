@@ -1,5 +1,5 @@
 <template>
-  <div class="card" v-if="report">
+  <div class="card bg-info" v-if="report">
     <button class="close" @click="$emit('report-clear')">X</button>
     <h5 class="card-title">Report type: {{ report.category }}</h5>
     <p class="card-text">Location: {{ report.address }}</p>
@@ -32,7 +32,7 @@ export default {
   margin: auto;
 
   max-width: 90%;
-  background-color: #007bff;
+
   color: black;
 }
 

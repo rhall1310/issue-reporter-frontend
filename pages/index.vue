@@ -3,6 +3,7 @@
     <Header />
     <h2>Select something to report</h2>
     <TileMenu :menuItems="categories" />
+    <a href="/reported"><h3>Or see what's already been reported</h3></a>
   </div>
 </template>
 
@@ -41,6 +42,10 @@ export default {
 
 <style scoped>
 h2 {
+  text-align: center;
+  padding-top: 0.2em;
+}
+h3 {
   text-align: center;
   padding-top: 0.2em;
 }
