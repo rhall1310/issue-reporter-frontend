@@ -37,6 +37,8 @@ html {
   margin: auto;
   max-width: 90%;
   color: black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .close {

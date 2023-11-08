@@ -1,7 +1,16 @@
 <template>
   <div id="map-wrap">
+    <div v-if="!currentReport">
+      <h2>See what's already been reported</h2>
+      <p>Click on a marker to see the report details</p>
+    </div>
+    <ReportDetails
+      :report="currentReport"
+      v-if="this.currentReport"
+      @report-clear="clearReport"
+    />
     <div class="autocomplete-container" id="autocomplete-container">
-      <div class="form-check form-check-inline search">
+      <div class="form-check form-check-inline search" v-if="!currentReport">
         <input
           type="text"
           name=""
@@ -55,12 +64,6 @@
         </l-marker>
       </l-map>
     </client-only>
-
-    <ReportDetails
-      :report="currentReport"
-      v-if="this.currentReport"
-      @report-clear="clearReport"
-    />
 
     <a href="/" class="else"><h3>Report something yourself</h3></a>
   </div>
@@ -215,6 +218,12 @@ export default {
 
 .search {
   margin-bottom: 0.4em;
+}
+
+p,
+h2 {
+  padding: 0.3rem;
+  text-align: center;
 }
 
 #search-bar {
