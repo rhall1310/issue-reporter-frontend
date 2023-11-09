@@ -22,7 +22,6 @@ export default {
       let categories = await $axios.$get("/menus/categories");
 
       return { categories };
-      c;
     } catch (e) {
       return { categories: [] };
     }

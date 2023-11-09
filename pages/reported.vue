@@ -30,6 +30,26 @@ export default {
       reports: [],
     };
   },
+  methods: {
+    getAddress() {
+      fetch(
+        "https://api.geoapify.com/v1/geocode/reverse?lat=" +
+          this.lat +
+          "&lon=" +
+          this.lon +
+          "&apiKey=" +
+          this.apiKey
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          this.address = result.features[0].properties;
+          this.address.lat = this.lat;
+          this.address.lon = this.lon;
+          this.$store.commit("setAddress", this.address);
+        })
+        .catch((error) => console.log("error", error));
+    },
+  },
 };
 </script>
 
