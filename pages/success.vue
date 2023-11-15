@@ -5,7 +5,7 @@
       <h1>Success</h1>
       <p>
         Thank you for your report
-        {{ this.$store.state.report.details.firstName }}. Here's what you have
+        {{ this.$store.state.report.details.firstName }}. Here's what you've
         told us -
       </p>
       <div class="card">
