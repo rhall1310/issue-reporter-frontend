@@ -59,6 +59,13 @@
             <div class="headline">Selected</div>
           </l-icon>
         </l-marker>
+        <l-marker
+          v-if="this.currentReport"
+          :lat-lng="[currentMarker.lat, currentMarker.lon]"
+        >
+          <l-icon iconUrl="marker-icon.png" :icon-anchor="staticAnchor">
+          </l-icon>
+        </l-marker>
       </l-map>
     </client-only>
 
@@ -113,7 +120,7 @@ export default {
         },
         place_id: "51cac342ad69ded03f59b1868bdcd3654940",
       },
-
+      staticAnchor: [12, 41],
       autoResults: [],
     };
   },
@@ -261,6 +268,7 @@ h2 {
   margin: 0 !important;
   font-weight: bold;
 }
+
 .else {
   text-align: center;
   padding-bottom: 1em;
