@@ -263,6 +263,7 @@ h2 {
 }
 h3 {
   text-align: center;
+  padding-bottom: 1em;
 }
 
 @media screen and (min-width: 800px) {
