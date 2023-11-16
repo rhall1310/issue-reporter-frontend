@@ -10,25 +10,8 @@
 
 <script>
 export default {
-  /* async asyncData({ $axios, params }) {
-    try {
-      let reports = await $axios.$get(`/reports/all/`);
-
-      for (let report of reports) {
-        delete report.first_name;
-        delete report.last_name;
-        delete report.title;
-      }
-
-      return { reports };
-    } catch (e) {
-      return { reports: [] };
-    }
-  }, */
   data() {
-    return {
-      reports: [],
-    };
+    return {};
   },
 
   mounted() {
@@ -64,10 +47,8 @@ export default {
           delete report.last_name;
           delete report.title;
         }
-        console.log(reports);
-        return { reports };
       } catch (e) {
-        return { reports: [] };
+        console.log(e);
       }
     },
   },

@@ -55,10 +55,7 @@
           v-if="this.currentReport"
           :lat-lng="[currentMarker.lat, currentMarker.lon]"
         >
-          <l-icon
-            :icon-anchor="staticAnchor"
-            class-name="custom-marker bg-info "
-          >
+          <l-icon class-name="custom-marker bg-info ">
             <div class="headline">Selected</div>
           </l-icon>
         </l-marker>

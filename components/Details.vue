@@ -66,13 +66,13 @@
       </div>
       <h3>Problem Details</h3>
 
-      <label for="details"
+      <label for="dets"
         >Can you give any further information? Such as a house number, business
         name or description of the problem?</label
       >
       <textarea
         name="details"
-        id=""
+        id="dets"
         cols="40"
         rows="5"
         v-model="report.details"
