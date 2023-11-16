@@ -3,14 +3,14 @@
     <div class="wrapper">
       <Header />
 
-      <ReportedMap :reports="reports" />
+      <ReportedMap :reports="this.$store.state.allReports" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ $axios, params }) {
+  /* async asyncData({ $axios, params }) {
     try {
       let reports = await $axios.$get(`/reports/all/`);
 
@@ -24,12 +24,17 @@ export default {
     } catch (e) {
       return { reports: [] };
     }
-  },
+  }, */
   data() {
     return {
       reports: [],
     };
   },
+
+  mounted() {
+    this.getReports();
+  },
+
   methods: {
     getAddress() {
       fetch(
@@ -48,6 +53,22 @@ export default {
           this.$store.commit("setAddress", this.address);
         })
         .catch((error) => console.log("error", error));
+    },
+    async getReports() {
+      try {
+        let reports = await this.$axios.$get(`/reports/all/`);
+        this.$store.commit("setReports", reports);
+
+        for (let report of reports) {
+          delete report.first_name;
+          delete report.last_name;
+          delete report.title;
+        }
+        console.log(reports);
+        return { reports };
+      } catch (e) {
+        return { reports: [] };
+      }
     },
   },
 };

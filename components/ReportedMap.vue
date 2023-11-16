@@ -116,6 +116,7 @@ export default {
         },
         place_id: "51cac342ad69ded03f59b1868bdcd3654940",
       },
+
       autoResults: [],
     };
   },

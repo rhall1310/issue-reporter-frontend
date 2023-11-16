@@ -7,6 +7,7 @@ export const state = () => ({
     details: {},
     menuId: "",
   },
+  allReports: [],
 });
 
 export const mutations = {
@@ -19,5 +20,8 @@ export const mutations = {
   },
   setMenuId(state, newId) {
     state.report.menuId = newId;
+  },
+  setReports(state, newReps) {
+    state.allReports = newReps;
   },
 };
