@@ -62,7 +62,7 @@
       </l-map>
     </client-only>
 
-    <a href="/" class="else"><h3>Report something yourself</h3></a>
+    <a href="/"><h3 class="else">Report something yourself</h3></a>
   </div>
 </template>
 
@@ -261,7 +261,7 @@ h2 {
   margin: 0 !important;
   font-weight: bold;
 }
-h3 {
+.else {
   text-align: center;
   padding-bottom: 1em;
 }
