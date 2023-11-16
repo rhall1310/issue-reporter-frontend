@@ -63,7 +63,10 @@
           v-if="this.currentReport"
           :lat-lng="[currentMarker.lat, currentMarker.lon]"
         >
-          <l-icon iconUrl="marker-icon.png" :icon-anchor="staticAnchor">
+          <l-icon
+            iconUrl="https://raw.githubusercontent.com/rhall1310/issue-reporter-frontend/master/static/marker-icon.png"
+            :icon-anchor="staticAnchor"
+          >
           </l-icon>
         </l-marker>
       </l-map>
