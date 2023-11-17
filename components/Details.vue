@@ -254,7 +254,10 @@ export default {
           this.$axios.$post("/reports/all/", formData);
           this.$router.push("/success");
         } else if (this.$store.state.report.address.lat) {
-          formData.append("address", this.report.address);
+          formData.append(
+            "address",
+            this.$store.state.report.address.formatted
+          );
 
           this.$axios.$post("/reports/all/", formData);
           this.$store.commit("setDetails", this.report);
