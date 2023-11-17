@@ -55,7 +55,7 @@
           v-if="this.currentReport"
           :lat-lng="[currentMarker.lat, currentMarker.lon]"
         >
-          <l-icon class-name="custom-marker bg-info ">
+          <l-icon class-name="custom-marker bg-info highlight">
             <div class="headline">Selected</div>
           </l-icon>
         </l-marker>
@@ -63,7 +63,11 @@
           v-if="this.currentReport"
           :lat-lng="[currentMarker.lat, currentMarker.lon]"
         >
-          <l-icon iconUrl="/marker-icon.png" :icon-anchor="staticAnchor">
+          <l-icon
+            iconUrl="/marker-icon.png"
+            :icon-anchor="staticAnchor"
+            class-name="highlight"
+          >
           </l-icon>
         </l-marker>
       </l-map>
@@ -267,6 +271,10 @@ h2 {
   height: auto !important;
   margin: 0 !important;
   font-weight: bold;
+}
+
+.highlight {
+  z-index: 999 !important;
 }
 
 .else {
