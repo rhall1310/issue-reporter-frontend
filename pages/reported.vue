@@ -39,14 +39,8 @@ export default {
     },
     async getReports() {
       try {
-        let reports = await this.$axios.$get(`/reports/all/`);
+        let reports = await this.$axios.$get(`/reports/public/`);
         this.$store.commit("setReports", reports);
-
-        for (let report of reports) {
-          delete report.first_name;
-          delete report.last_name;
-          delete report.title;
-        }
       } catch (e) {
         console.log(e);
       }
