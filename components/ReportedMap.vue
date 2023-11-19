@@ -4,10 +4,12 @@
       <h2>See what's already been reported</h2>
       <p>Click on a marker to see the report details</p>
     </div>
+
     <ReportDetails
       :report="currentReport"
       v-if="this.currentReport"
       @report-clear="clearReport"
+      @zoom-to="zoomTo(currentMarker.lat, currentMarker.lon)"
     />
     <div class="autocomplete-container" id="autocomplete-container">
       <div class="form-check form-check-inline search" v-if="!currentReport">
@@ -164,6 +166,11 @@ export default {
       this.centreCoords = [result.properties.lat, result.properties.lon];
       this.zoom = 16;
       this.autoResults = [];
+    },
+
+    zoomTo(lat, lon) {
+      this.centreCoords = [lat, lon];
+      this.zoom = 20;
     },
 
     getLoc() {

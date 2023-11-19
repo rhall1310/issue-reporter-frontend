@@ -1,6 +1,11 @@
 <template>
   <div class="card bg-info" v-if="report">
-    <button class="close" @click="$emit('report-clear')">X</button>
+    <div class="card-buttons">
+      <button class="zoom" @click="$emit('zoom-to')">
+        <img src="/locate-icon.png" alt="" />
+      </button>
+      <button class="close" @click="$emit('report-clear')">X</button>
+    </div>
     <h5 class="card-title">Report type: {{ report.category }}</h5>
     <p class="card-text">Location: {{ report.address }}</p>
     <p class="card-text">Details: {{ report.details }}</p>
@@ -41,11 +46,33 @@ html {
   margin-top: 2rem;
   text-align: center;
 }
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.2rem;
+}
 
 .close {
   width: 1em;
   font-weight: bold;
-  align-self: end;
+  font-size: 28px;
+  height: 100%;
+}
+
+.zoom {
+  width: 2em;
+  font-weight: bold;
+  align-self: start;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 800px) {
