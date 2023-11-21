@@ -4,7 +4,8 @@
       <h2>See what's already been reported</h2>
       <p>Click on a marker to see the report details</p>
     </div>
-
+    <p>{{ this.zoom }}</p>
+    <p>{{ this.centreCoords }}</p>
     <ReportDetails
       :report="currentReport"
       v-if="this.currentReport"
@@ -42,7 +43,14 @@
     </div>
 
     <client-only>
-      <l-map id="map" :zoom="zoom" :center="centreCoords" @click="moveMarker">
+      <l-map
+        id="map"
+        :zoom="zoom"
+        :center="centreCoords"
+        @update:zoom="zoomUpdated"
+        @update:center="centreUpdated"
+        @update:bounds="boundsUpdated"
+      >
         <l-tile-layer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
@@ -95,6 +103,7 @@ export default {
       apiKey: process.env.NUXT_ENV_API_KEY,
       zoom: 15,
       centreCoords: [50.795893175589484, 0.26435462099609897],
+      bounds: [],
       lat: "50.795893175589484",
       lon: "0.26435462099609897",
       addSearch: "",
@@ -136,12 +145,14 @@ export default {
   },
 
   methods: {
-    moveMarker(event) {
-      this.centreCoords = event.latlng;
-      this.lat = event.latlng.lat;
-      this.lon = event.latlng.lng;
-
-      this.getAddress();
+    zoomUpdated(zoom) {
+      this.zoom = zoom;
+    },
+    centreUpdated(center) {
+      this.centreCoords = center;
+    },
+    boundsUpdated(bounds) {
+      this.bounds = bounds;
     },
 
     autoComplete() {
@@ -170,7 +181,9 @@ export default {
 
     zoomTo(lat, lon) {
       this.centreCoords = [lat, lon];
-      this.zoom = 20;
+      setTimeout(() => {
+        this.zoom = 18;
+      }, 250);
     },
 
     getLoc() {
@@ -181,29 +194,9 @@ export default {
         ];
         this.lat = position.coords.latitude;
         this.lon = position.coords.longitude;
-
-        this.getAddress();
       });
     },
 
-    getAddress() {
-      fetch(
-        "https://api.geoapify.com/v1/geocode/reverse?lat=" +
-          this.lat +
-          "&lon=" +
-          this.lon +
-          "&apiKey=" +
-          this.apiKey
-      )
-        .then((response) => response.json())
-        .then((result) => {
-          this.address = result.features[0].properties;
-          this.address.lat = this.lat;
-          this.address.lon = this.lon;
-          this.$store.commit("setAddress", this.address);
-        })
-        .catch((error) => console.log("error", error));
-    },
     getDets(i) {
       this.currentReport = i;
       this.currentMarker = i;
