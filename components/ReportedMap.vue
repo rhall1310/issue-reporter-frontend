@@ -4,8 +4,7 @@
       <h2>See what's already been reported</h2>
       <p>Click on a marker to see the report details</p>
     </div>
-    <p>{{ this.zoom }}</p>
-    <p>{{ this.centreCoords }}</p>
+
     <ReportDetails
       :report="currentReport"
       v-if="this.currentReport"
