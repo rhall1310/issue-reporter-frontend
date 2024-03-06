@@ -213,6 +213,7 @@ export default {
   },
 
   methods: {
+    // handle images
     onFilePicked(event) {
       console.log(event);
       this.report.photo = event.target.files[0];
@@ -239,6 +240,7 @@ export default {
       formData.append("email", this.report.email);
       formData.append("phone_number", this.report.phoneNumber);
 
+      // use manual address if necessary
       if (!form.checkValidity || form.checkValidity()) {
         if (this.manualAddress) {
           this.manualAdd.formatted =

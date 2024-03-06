@@ -144,6 +144,7 @@ export default {
   },
 
   methods: {
+    // Map methods
     zoomUpdated(zoom) {
       this.zoom = zoom;
     },
