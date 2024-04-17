@@ -213,12 +213,15 @@ export default {
   },
 
   methods: {
-    // handle images
+    // handle image upload
     onFilePicked(event) {
       console.log(event);
       this.report.photo = event.target.files[0];
       this.preview = URL.createObjectURL(this.report.photo);
     },
+
+    // report submission
+
     async submitReport() {
       const form = document.getElementById("main-form");
 
