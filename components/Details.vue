@@ -277,6 +277,7 @@ export default {
   },
 
   computed: {
+    // manual address handling
     manAdd() {
       if ((this.manualAddress = true)) {
         return (

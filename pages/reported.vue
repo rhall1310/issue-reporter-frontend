@@ -37,6 +37,7 @@ export default {
         })
         .catch((error) => console.log("error", error));
     },
+    // fetch reports from backend
     async getReports() {
       try {
         let reports = await this.$axios.$get(`/reports/public/`);
