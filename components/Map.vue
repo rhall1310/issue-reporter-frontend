@@ -100,7 +100,7 @@ export default {
 
       this.getAddress();
     },
-
+    // auto complete for searches
     autoComplete() {
       if (this.addSearch.length >= 3) {
         fetch(

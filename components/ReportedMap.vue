@@ -154,7 +154,7 @@ export default {
     boundsUpdated(bounds) {
       this.bounds = bounds;
     },
-
+    // auto complete for searches
     autoComplete() {
       if (this.addSearch.length >= 3) {
         fetch(
