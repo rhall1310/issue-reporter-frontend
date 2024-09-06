@@ -4,7 +4,7 @@
     <div class="container" v-if="this.$store.state.report.details.category">
       <h1>Success</h1>
       <p>
-        Thank you for your report
+        Thanks for your report
         {{ this.$store.state.report.details.firstName }}. Here's what you've
         told us -
       </p>
