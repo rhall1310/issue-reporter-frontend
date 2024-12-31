@@ -29,7 +29,7 @@ button {
 }
 
 #defIcon {
-  max-height: 2.5em;
+  max-height: 5em;
 }
 
 @media screen and (max-width: 320px) {
