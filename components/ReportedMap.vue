@@ -172,7 +172,7 @@ export default {
         alert("Search field must be at least 3 characters");
       }
     },
-
+    // center map on search result
     recenterMap(result) {
       this.centreCoords = [result.properties.lat, result.properties.lon];
       this.zoom = 16;

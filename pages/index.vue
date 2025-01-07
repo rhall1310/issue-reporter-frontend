@@ -10,7 +10,7 @@
 <script>
 export default {
   name: "IndexPage",
-
+  // get categories from backend
   async asyncData({ $axios, params }) {
     try {
       let categories = await $axios.$get(
