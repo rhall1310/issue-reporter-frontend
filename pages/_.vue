@@ -12,6 +12,7 @@
 
       <Details :category="category.name" />
     </div>
+    <a href="/reported"><h3>Or see what's already been reported</h3></a>
   </div>
 </template>
 
@@ -53,6 +54,11 @@ export default {
 h2 {
   text-align: center;
   padding-top: 0.2em;
+}
+
+h3 {
+  text-align: center;
+  padding: 0.2em;
 }
 
 .map-address {
