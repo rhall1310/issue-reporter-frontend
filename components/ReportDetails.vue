@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-info" v-if="report">
+  <div class="card btn-primary" v-if="report">
     <div class="card-buttons">
       <button class="zoom" @click="$emit('zoom-to')">
         <img src="/locate-icon.png" alt="" />
@@ -41,10 +41,11 @@ html {
   padding: 1rem;
   margin: auto;
   max-width: 90%;
-  color: black;
+  color: white;
   margin-bottom: 2rem;
   margin-top: 2rem;
   text-align: center;
+  background-color: #007bff;
 }
 .card-buttons {
   display: flex;
@@ -77,7 +78,7 @@ html {
 
 @media screen and (min-width: 800px) {
   .card {
-    max-width: 40%;
+    max-width: 60%;
   }
 }
 </style>

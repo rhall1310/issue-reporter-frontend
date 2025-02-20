@@ -1,6 +1,8 @@
 <template>
   <div class="header bg-info text-light">
-    <h1>Report a problem</h1>
+    <a href="/" style="color: white">
+      <h1>Report a problem</h1>
+    </a>
   </div>
 </template>
 
