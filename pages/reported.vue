@@ -37,7 +37,7 @@ export default {
         })
         .catch((error) => console.log("error", error));
     },
-    // fetch reports from backend
+    // fetch reports from backend which are flagged public
     async getReports() {
       try {
         let reports = await this.$axios.$get(`/reports/public/`);

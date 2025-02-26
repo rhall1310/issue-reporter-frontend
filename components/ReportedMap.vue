@@ -2,7 +2,7 @@
   <div id="map-wrap">
     <div v-if="!currentReport">
       <h2>See what's already been reported</h2>
-      <p>Click on a marker to see the report details</p>
+      <p>Click on a marker to see the details of a report</p>
     </div>
 
     <ReportDetails
