@@ -295,7 +295,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .map {
   padding-top: 1em;
   text-align: center;
@@ -303,6 +303,7 @@ export default {
 .form-group {
   display: flex;
   flex-direction: column;
+  justify-self: center;
   padding: 1em;
 }
 
@@ -318,6 +319,7 @@ export default {
   color: rgb(201, 23, 23);
   font-weight: bold;
 }
+
 #submit {
   margin-top: 1em;
 }
@@ -347,8 +349,6 @@ export default {
 @media screen and (min-width: 600px) {
   #preview {
     max-width: 25%;
-  }
-  .form-group {
     max-width: 80vw;
   }
 }
